@@ -1,5 +1,5 @@
 <div align="center">
-
+<img src="docs/Icon/Yantra.svg" alt="Yantra Logo" width="120" height="120">
 # Yantra 📚
 
 > Turn your PDFs, slides, and notes into spaced-repetition power.
