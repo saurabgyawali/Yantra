@@ -43,8 +43,6 @@
 
 ## 📸 Screenshots
 
-> Add screenshots to `docs/screenshots/` and update the paths below.
-
 <div align="center">
 
 | Home Screen | PDF Viewer | Flashcard Review |
