@@ -1,5 +1,6 @@
 <div align="center">
-<img src="docs/Icon/Yantra.webp" alt="Yantra Logo" width="120" height="120" style="border-radius: 20px; border: 2px solid #e0e0e0; padding: 10px; background-color: #ffffff;">
+
+<img src="docs/Icon/Yantra.svg" alt="Yantra Logo" width="140" height="140">
 
 # Yantra 📚
 
