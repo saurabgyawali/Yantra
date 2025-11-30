@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="docs/Icon/Yantra.svg" alt="Yantra Logo" width="140" height="140">
+<img src="docs/Icon/Yantra.webp" alt="Yantra Logo" width="140" height="140">
 
 # Yantra 📚
 
