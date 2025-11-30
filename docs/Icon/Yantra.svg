@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!--?xml version="1.0" encoding="UTF-8"?-->
+
+<svg
+   width="1024"
+   height="1024"
+   viewBox="0 0 1024 1024"
+   version="1.1"
+   id="svg3"
+   sodipodi:docname="Yantra.svg"
+   inkscape:version="1.4.2 (ebf0e940, 2025-05-08)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs3" />
+  <sodipodi:namedview
+     id="namedview3"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:zoom="0.36782424"
+     inkscape:cx="239.2447"
+     inkscape:cy="528.78516"
+     inkscape:window-width="1472"
+     inkscape:window-height="894"
+     inkscape:window-x="0"
+     inkscape:window-y="34"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="svg3" />
+  <!-- Background -->
+  <rect
+     x="0"
+     y="0"
+     width="1024"
+     height="1024"
+     fill="#4A90D9"
+     id="rect1"
+     inkscape:label="background" />
+  <!-- Card stack group (centered) -->
+  <g
+     id="g3"
+     inkscape:label="cards"
+     transform="matrix(0.78731259,0,0,0.76509796,108.85878,98.410642)">
+    <rect
+       x="187.4679"
+       y="346.05884"
+       width="420"
+       height="600"
+       rx="80"
+       ry="80"
+       fill="#ffffff"
+       stroke="#0e5a9a"
+       stroke-width="22"
+       stroke-linejoin="round"
+       transform="rotate(-9.665332)"
+       id="rect3-7"
+       style="fill:#66b5f5;fill-opacity:1" />
+    <rect
+       x="399.18134"
+       y="101.32174"
+       width="420"
+       height="600"
+       rx="80"
+       ry="80"
+       fill="#ffffff"
+       stroke="#0e5a9a"
+       stroke-width="22"
+       stroke-linejoin="round"
+       transform="rotate(11.376977)"
+       id="rect3" />
+  </g>
+</svg>

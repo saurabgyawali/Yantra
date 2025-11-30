@@ -1,17 +1,20 @@
 package com.example.yantra.ui.home
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.verticalScroll
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.MenuBook
-import androidx.compose.material.icons.filled.CollectionsBookmark
 import androidx.compose.material.icons.filled.Bolt
+import androidx.compose.material.icons.filled.CollectionsBookmark
+import androidx.compose.material.icons.filled.MenuBook
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.DropdownMenu
+import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -22,6 +25,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -49,6 +54,12 @@ fun HomeScreen(
     LaunchedEffect(Unit) {
         vm.refreshStats()
     }
+
+    // For now, static username (can be wired to real user profile later)
+    val userName = "Student"
+
+    // Avatar/menu state
+    val accountMenuExpanded = remember { mutableStateOf(false) }
 
     Scaffold { paddingValues ->
         Box(
@@ -93,19 +104,53 @@ fun HomeScreen(
                         )
                     }
 
-                    // Small circular accent "avatar"
+                    // Avatar + menu
                     Box(
-                        modifier = Modifier
-                            .size(40.dp)
-                            .clip(CircleShape)
-                            .background(MaterialTheme.colorScheme.primaryContainer),
-                        contentAlignment = Alignment.Center
+                        contentAlignment = Alignment.TopEnd
                     ) {
-                        Text(
-                            text = "Y",
-                            style = MaterialTheme.typography.titleMedium,
-                            color = MaterialTheme.colorScheme.onPrimaryContainer
-                        )
+                        Box(
+                            modifier = Modifier
+                                .size(40.dp)
+                                .clip(CircleShape)
+                                .background(MaterialTheme.colorScheme.primaryContainer)
+                                .clickable {
+                                    accountMenuExpanded.value = true
+                                },
+                            contentAlignment = Alignment.Center
+                        ) {
+                            Text(
+                                text = "Y",
+                                style = MaterialTheme.typography.titleMedium,
+                                color = MaterialTheme.colorScheme.onPrimaryContainer
+                            )
+                        }
+
+                        DropdownMenu(
+                            expanded = accountMenuExpanded.value,
+                            onDismissRequest = { accountMenuExpanded.value = false }
+                        ) {
+                            DropdownMenuItem(
+                                text = { Text("Profile (coming soon)") },
+                                onClick = {
+                                    // TODO: Navigate to profile screen
+                                    accountMenuExpanded.value = false
+                                }
+                            )
+                            DropdownMenuItem(
+                                text = { Text("Toggle theme (light/dark)") },
+                                onClick = {
+                                    // TODO: Hook up to theme toggle
+                                    accountMenuExpanded.value = false
+                                }
+                            )
+                            DropdownMenuItem(
+                                text = { Text("Settings (coming soon)") },
+                                onClick = {
+                                    // TODO: Navigate to settings screen
+                                    accountMenuExpanded.value = false
+                                }
+                            )
+                        }
                     }
                 }
 
