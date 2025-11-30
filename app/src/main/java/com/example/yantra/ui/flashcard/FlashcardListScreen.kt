@@ -71,13 +71,9 @@ fun FlashcardListScreen(
             Column(
                 modifier = Modifier
                     .fillMaxSize()
-                    .padding(8.dp)
+                    .padding(16.dp)
             ) {
-                TextButton(onClick = { navController.popBackStack() }) {
-                    Text("Back")
-                }
-
-                Spacer(modifier = Modifier.height(8.dp))
+                // No manual Back button here – navigation handled at NavHost level
 
                 if (cards.isEmpty()) {
                     Box(
@@ -92,8 +88,7 @@ fun FlashcardListScreen(
                 } else {
                     LazyColumn(
                         modifier = Modifier
-                            .fillMaxSize()
-                            .padding(top = 8.dp),
+                            .fillMaxSize(),
                         verticalArrangement = Arrangement.spacedBy(8.dp)
                     ) {
                         items(cards) { card ->
@@ -292,7 +287,8 @@ fun FlashcardListScreen(
                     confirmButton = {
                         TextButton(
                             onClick = {
-                                val newDeckId = selectedMoveDeckId ?: 0L
+                                // ✅ Always pass non-null Long to deckId
+                                val newDeckId: Long = selectedMoveDeckId ?: 0L
                                 vm.update(
                                     cardToMove.copy(deckId = newDeckId)
                                 )
@@ -335,7 +331,12 @@ private fun FlashcardListItem(
             .combinedClickable(
                 onClick = { showBack = !showBack },   // tap to flip
                 onLongClick = { onLongPress(card) }   // long press → actions dialog
-            )
+            ),
+        colors = CardDefaults.cardColors(
+            containerColor = MaterialTheme.colorScheme.surfaceVariant
+        ),
+        elevation = CardDefaults.cardElevation(defaultElevation = 1.dp),
+        shape = MaterialTheme.shapes.medium
     ) {
         Column(modifier = Modifier.padding(16.dp)) {
             Text(

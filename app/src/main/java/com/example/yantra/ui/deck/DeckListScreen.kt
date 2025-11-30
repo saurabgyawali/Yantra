@@ -1,10 +1,12 @@
 package com.example.yantra.ui.deck
 
 import androidx.compose.foundation.ExperimentalFoundationApi
+import androidx.compose.foundation.background
 import androidx.compose.foundation.combinedClickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Bolt
@@ -12,6 +14,7 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
@@ -83,13 +86,21 @@ fun DeckListScreen(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(padding)
-                .padding(16.dp)
+                .padding(horizontal = 16.dp, vertical = 12.dp)
         ) {
-            TextButton(onClick = { navController.popBackStack() }) {
-                Text("Back")
-            }
+            // Header (replaces Back button)
+            Text(
+                text = "Your decks",
+                style = MaterialTheme.typography.headlineSmall
+            )
+            Spacer(Modifier.height(4.dp))
+            Text(
+                text = "Tap a deck to open it. Long press for review & delete options.",
+                style = MaterialTheme.typography.bodySmall,
+                color = MaterialTheme.colorScheme.onSurfaceVariant
+            )
 
-            Spacer(Modifier.height(8.dp))
+            Spacer(Modifier.height(16.dp))
 
             if (decks.isEmpty()) {
                 Box(
@@ -104,7 +115,7 @@ fun DeckListScreen(
             } else {
                 LazyColumn(
                     modifier = Modifier.fillMaxSize(),
-                    verticalArrangement = Arrangement.spacedBy(8.dp)
+                    verticalArrangement = Arrangement.spacedBy(10.dp)
                 ) {
                     items(decks) { deck ->
                         DeckListItem(
@@ -225,6 +236,10 @@ private fun DeckListItem(
     onClick: () -> Unit,
     onLongClick: () -> Unit
 ) {
+    val surfaceColor = MaterialTheme.colorScheme.surfaceVariant
+    val accentColor = MaterialTheme.colorScheme.primaryContainer
+    val accentTextColor = MaterialTheme.colorScheme.onPrimaryContainer
+
     Card(
         modifier = Modifier
             .fillMaxWidth()
@@ -233,21 +248,48 @@ private fun DeckListItem(
                 onLongClick = onLongClick
             ),
         colors = CardDefaults.cardColors(
-            containerColor = MaterialTheme.colorScheme.surfaceVariant
+            containerColor = surfaceColor
         ),
         elevation = CardDefaults.cardElevation(defaultElevation = 1.dp),
-        shape = MaterialTheme.shapes.medium
+        shape = MaterialTheme.shapes.large
     ) {
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(16.dp),
+                .padding(horizontal = 14.dp, vertical = 12.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
-            Text(
-                text = deck.name,
-                style = MaterialTheme.typography.titleMedium
-            )
+            // Circular "avatar" with first letter of deck
+            Box(
+                modifier = Modifier
+                    .size(40.dp)
+                    .clip(CircleShape)
+                    .background(accentColor),
+                contentAlignment = Alignment.Center
+            ) {
+                Text(
+                    text = deck.name.firstOrNull()?.uppercase() ?: "?",
+                    style = MaterialTheme.typography.titleMedium,
+                    color = accentTextColor
+                )
+            }
+
+            Spacer(Modifier.width(12.dp))
+
+            Column(
+                modifier = Modifier.weight(1f)
+            ) {
+                Text(
+                    text = deck.name,
+                    style = MaterialTheme.typography.titleMedium
+                )
+                Spacer(Modifier.height(2.dp))
+                Text(
+                    text = "Tap to open • Long press for options",
+                    style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                )
+            }
         }
     }
 }
