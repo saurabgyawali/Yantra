@@ -274,7 +274,7 @@ fun PDFViewerScreen(
                         },
                         enabled = pdfRenderer != null && pageIndex > 0
                     ) {
-                        Text("Previous")
+                        Text("Prev")
                     }
 
                     Button(

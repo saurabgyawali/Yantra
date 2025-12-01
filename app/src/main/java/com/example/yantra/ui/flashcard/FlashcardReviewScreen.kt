@@ -248,7 +248,7 @@ fun FlashcardReviewScreen(
                 } else {
                     // Only show SRS rating once the answer is visible
                     Text(
-                        text = "Swipe left = Again, up = Good, right = Easy.\nOr use the buttons below.",
+                        text = "Swipe left = Hard, up = Good, right = Easy.\nOr use the buttons below.",
                         style = MaterialTheme.typography.bodyMedium
                     )
                     Spacer(Modifier.height(8.dp))
@@ -260,7 +260,7 @@ fun FlashcardReviewScreen(
                         Button(onClick = {
                             vm.submitReview(card, Rating.AGAIN)
                         }) {
-                            Text("Again")
+                            Text("Hard")
                         }
 
                         Button(onClick = {
